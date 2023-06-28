@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+import { RingLoader } from 'react-spinners';
 export const PlanetsDetail = (props) => {
     const { store, actions } = useContext(Context);
     const params = useParams();

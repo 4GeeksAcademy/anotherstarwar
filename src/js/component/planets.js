@@ -12,7 +12,7 @@ const Planets= (props) => {
                 <div className="card-body">
                     <h4 className="card-title">{props.nombre} </h4>
                     <p className="d-none d-sm-none d-md-block">
-                    <strong> Population: </strong>{props.poblacion}  <br />
+                    <strong> Poblacion: </strong>{props.poblacion}  <br />
                      <strong> Terrain: </strong> {props.terreno} <br /> 
                     </p>
                     <div className="row">

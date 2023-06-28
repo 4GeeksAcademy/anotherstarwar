@@ -84,14 +84,14 @@ const getState = ({
                         infoVehicles: data.result
                     }))
             },
-             // funcion para agregar favoritos asociadas al boton corazon de cada card en home 
-             agregarFavoritos: (item) => {
+             
+             addFavorites: (item) => {
                 const store = getStore();
-                // forma un array extrayendo la propiedad nombre de favoritos
+              
                 const array = store.favoritos.map((item) => {
                     return (item.name)
                 });
-                //verifica si el nombre se ecuentra en el array, sino esta lo agrega a el array favoritos 
+               
                 const res = array.includes(item.name);
                 if (res == false) {
                     setStore({
@@ -99,7 +99,7 @@ const getState = ({
                     });
                 }
             },
-              //funcion para borrar favoritos asociadas al boton X dentro de la lista en el dropdown de navbar
+            
               borrarFavoritos: (itemBorrar) => {
                 const store = getStore();
                 const newfavoritos = store.favoritos.filter((item) => item !== itemBorrar)

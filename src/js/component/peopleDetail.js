@@ -29,7 +29,7 @@ export const PeopleDetail = (props) => {
                     <img src={"https://starwars-visualguide.com/assets/img/characters/" + params.theid + ".jpg"} className="m-auto img-fluid rounded-start " style={{ width: "250px" }} />
                 </div>
                 <div className="col-12 col-md-6 m-auto p-auto">
-                    <div className="card-body">
+                    <div className="card-body ">
                         
                         <p >Nombre: {store.infoPeople.properties.name}</p>
                         <p >Año de nacimiento:{store.infoPeople.properties.birth_year}</p>

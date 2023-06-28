@@ -24,4 +24,45 @@
     background-color: #E53935;
   }
   
+  .custom-blockquote {
+    background-color: #f8f9fa;
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin: 20px 0;
+  }
+  
+  .quote-text {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .quote-author {
+    margin-top: 10px;
+    font-style: italic;
+    color: #888;
+  }
+  
+  .star-wars-bg {
+    background-color: #212121;
+    background-repeat: repeat;
+    background-size: cover;
+  }
+  
+  #nav{
+    background-color: #212121;
+  }
+
+  .custom-btn {
+    background-color: white;
+    
+  }
+  
+  .spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+  }
+  
+  
  
