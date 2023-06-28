@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { PeopleDetail } from "../component/peopleDetail";
+import { VehiclesDetail } from "../component/vehiclesDetail";
 
-export const People = () => {
+export const Vehicles = () => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-    
+   
 
     useEffect(() => {
-        actions.loadinfoPeople(params.theid);
+        actions.loadinfoVehicles(params.theid);
     }, [])
 
     return (
-       <div className="container-fluid">
-        <PeopleDetail>
-           
-        </PeopleDetail>
-       </div>
+        <div className="container-fluid">
+            <VehiclesDetail>
+
+            </VehiclesDetail>
+        </div>
     );
 };

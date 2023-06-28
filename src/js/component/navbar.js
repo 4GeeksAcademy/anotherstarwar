@@ -22,7 +22,7 @@ export const Navbar = () => {
       </div>
       <div className="dropstart m-auto">
   <button className="btn btn1 m-auto" id="dropdownMenuClickable" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-  <strong>Favorites </strong>
+  <strong>Favoritos </strong>
   </button>
   <ul className="dropdown-menu bg-dark border border-ligth " aria-labelledby="dropdownMenuClickableInside">
 							{store.favoritos.length > 0 ? store.favoritos.map((item, index) => {

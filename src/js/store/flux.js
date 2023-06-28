@@ -15,6 +15,8 @@ const getState = ({
             planets: [],
             infoPlanets: [],
             favoritos: [],
+            vehicles: [],
+            infoVehicles:[],
             
             //demo: [{
                    // title: "FIRST",

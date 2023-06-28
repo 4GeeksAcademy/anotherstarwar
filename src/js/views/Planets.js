@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 export const Planets = () => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-    console.log ("planets")
+   
 
     useEffect(() => {
         actions.loadinfoPlanets(params.theid);
