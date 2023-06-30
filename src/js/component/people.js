@@ -20,7 +20,7 @@ const People = (props) => {
                             <Link to={"/people/" + props.id} className="btn  btn-primary">Learn More!</Link>
                         </div>
                         <div className="col-6">
-                         {<button type="button" onClick={() => actions.addFavorites({ name: props.nombre, id: props.id, categoria: props.ruta })} className="btn btn-warning"><i className="fa fa-heart" /></button> }  
+                            {<button type="button" onClick={() => actions.addFavorites({ name: props.nombre, id: props.id, categoria: props.ruta })} className="btn btn-warning"><i className="fa fa-heart" /></button>}
                         </div>
                     </div>
                 </div>

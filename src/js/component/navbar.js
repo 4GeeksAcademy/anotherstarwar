@@ -7,8 +7,8 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      
-      
+
+
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img src={logo} className="img-fluid" style={{ width: '200px' }} />
@@ -27,7 +27,7 @@ export const Navbar = () => {
             {store.favoritos.length > 0 ? (
               store.favoritos.map((item, index) => {
                 return (
-                  // realizo un map de favorito para leer cada item agregado por el usuario y recibe props desde home  (name, id y cateogoria) para formar la ruta de cada item asi acceder a la vista detallada
+
                   <li key={index} className="dropdown-item bg-dark text-light">
                     <span>
                       <Link className="text-decoration-none text-warning" to={`/${item.categoria}/${item.id}`}>
@@ -45,8 +45,8 @@ export const Navbar = () => {
               })
             ) : (
               <blockquote className="custom-blockquote">
-                <p className="quote-text">Add your favorites.</p>
-                <footer className="quote-author">Star War</footer>
+                <p className="quote-text">Añadir favoritos<i className="fa fa-heart" /></p>
+                <footer className="quote-author">Lucasfilms</footer>
               </blockquote>
             )}
           </ul>

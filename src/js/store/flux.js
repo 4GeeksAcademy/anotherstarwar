@@ -1,6 +1,4 @@
-import {
-    array
-} from "prop-types";
+
 
 const getState = ({
     getStore,
@@ -9,33 +7,33 @@ const getState = ({
 }) => {
     return {
         store: {
-            
+
             people: [],
             infoPeople: [],
             planets: [],
             infoPlanets: [],
             favoritos: [],
             vehicles: [],
-            infoVehicles:[],
-            
+            infoVehicles: [],
+
             //demo: [{
-                   // title: "FIRST",
-                  //  background: "white",
-                   // initial: "white"
-               // },
-              //  {
-                 //   title: "SECOND",
-                 //   background: "white",
-                  //  initial: "white"
-           //     }
-           // ]
+            // title: "FIRST",
+            //  background: "white",
+            // initial: "white"
+            // },
+            //  {
+            //   title: "SECOND",
+            //   background: "white",
+            //  initial: "white"
+            //     }
+            // ]
         },
         actions: {
-           
+
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
             },
-            
+
             loadPeople: () => {
                 fetch('https://swapi.dev/api/people')
                     .then((response) => response.json())
@@ -59,9 +57,8 @@ const getState = ({
                         vehicles: data.results
                     }))
             },
-           
+
             loadinfoPeople: (uid) => {
-                // fetch(`https://www.swapi.tech/api/people/${uid}`)
                 fetch('https://www.swapi.tech/api/people/' + uid)
                     .then((response) => response.json())
                     .then(data => setStore({
@@ -84,14 +81,14 @@ const getState = ({
                         infoVehicles: data.result
                     }))
             },
-             
-             addFavorites: (item) => {
+
+            addFavorites: (item) => {
                 const store = getStore();
-              
+
                 const array = store.favoritos.map((item) => {
                     return (item.name)
                 });
-               
+
                 const res = array.includes(item.name);
                 if (res == false) {
                     setStore({
@@ -99,8 +96,8 @@ const getState = ({
                     });
                 }
             },
-            
-              borrarFavoritos: (itemBorrar) => {
+
+            borrarFavoritos: (itemBorrar) => {
                 const store = getStore();
                 const newfavoritos = store.favoritos.filter((item) => item !== itemBorrar)
                 setStore({
@@ -108,7 +105,7 @@ const getState = ({
                 })
             },
 
-           
+
 
             changeColor: (index, color) => {
                 //get the store

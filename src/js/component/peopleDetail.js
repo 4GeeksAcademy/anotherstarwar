@@ -11,13 +11,12 @@ export const PeopleDetail = (props) => {
         actions.loadinfoPeople(params.theid);
     }, [])
 
-    console.log("props", props);
-    console.log("store", store);
+   
 
     if (!store.infoPeople || !Object.keys(store.infoPeople).length) {
         return (
-            
-            <p>loading</p>
+
+            <p> <i className="fa fa-rocket text-danger" /></p>
         )
     }
 
@@ -30,8 +29,9 @@ export const PeopleDetail = (props) => {
                 </div>
                 <div className="col-12 col-md-6 m-auto p-auto">
                     <div className="card-body ">
-                        
+
                         <p >Nombre: {store.infoPeople.properties.name}</p>
+                        <p >Descripcion: {store.infoPeople.description}</p>
                         <p >Año de nacimiento:{store.infoPeople.properties.birth_year}</p>
                         <p >Género: {store.infoPeople.properties.gender}</p>
                         <p >Altura :{store.infoPeople.properties.height}</p>

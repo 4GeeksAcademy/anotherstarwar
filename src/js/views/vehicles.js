@@ -6,7 +6,7 @@ import { VehiclesDetail } from "../component/vehiclesDetail";
 export const Vehicles = () => {
     const { store, actions } = useContext(Context);
     const params = useParams();
-   
+
 
     useEffect(() => {
         actions.loadinfoVehicles(params.theid);

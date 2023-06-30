@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { RingLoader } from 'react-spinners';
 export const PlanetsDetail = (props) => {
     const { store, actions } = useContext(Context);
     const params = useParams();
@@ -11,14 +10,11 @@ export const PlanetsDetail = (props) => {
         actions.loadinfoPlanets(params.theid);
     }, [])
 
-    console.log("props", props);
-    console.log("store", store);
-
 
     if (!store.infoPlanets || !Object.keys(store.infoPlanets).length) {
         return (
 
-            <p>loading</p>
+            <p> <i className="fa fa-rocket text-danger" /></p>
         )
     }
 
@@ -33,11 +29,12 @@ export const PlanetsDetail = (props) => {
                     <div className="card-body">
 
                         <p >Nombre: {store.infoPlanets.properties.name}</p>
+                        <p >Descripción: {store.infoPlanets.description}</p>
                         <p >Clima:{store.infoPlanets.properties.climate}</p>
                         <p >Polucion: {store.infoPlanets.properties.population}</p>
-                        <p >Orbita :{store.infoPlanets.properties.orbital}</p>
-                        <p >Rotacion :{store.infoPlanets.properties.rotation}</p>
-                        <p >Diametro :{store.infoPlanets.properties.eye_diameter}</p>
+                        <p >Orbita :{store.infoPlanets.properties.orbital_period}</p>
+                        <p >Rotacion :{store.infoPlanets.properties.rotation_period}</p>
+                        <p >Diametro :{store.infoPlanets.properties.diameter}</p>
 
                     </div>
                 </div>

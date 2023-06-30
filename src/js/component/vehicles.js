@@ -11,8 +11,10 @@ const Vehicles = (props) => {
                 <div className="card-body">
                     <h4 className="card-title">{props.nombre} </h4>
                     <p className="d-none d-sm-none d-md-block">
-                        <strong> Passangers: </strong>{props.passengers} <br />
-                        <strong> Speed: </strong> {props.speed} <br />
+
+                        <strong> Modelo: </strong>{props.model} <br />
+                        <strong> Consumibles: </strong> {props.consumables} <br />
+
 
 
                     </p>
@@ -21,7 +23,9 @@ const Vehicles = (props) => {
                             <Link to={"/vehicles/" + props.id} className="btn  btn-primary">Learn More!</Link>
                         </div>
                         <div className="col-6">
-                            {<button type="button" onClick={() => actions.addFavorites({ name: props.nombre, id: props.id, categoria: props.ruta })} className="btn btn-warning"><i className="fa fa-heart" /></button>}
+                            {<button type="button" onClick={() =>
+                                actions.addFavorites
+                                    ({ name: props.nombre, id: props.id, categoria: props.ruta })} className="btn btn-warning"><i className="fa fa-heart" /></button>}
                         </div>
                     </div>
                 </div>

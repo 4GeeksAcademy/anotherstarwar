@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+
 export const VehiclesDetail = (props) => {
     const { store, actions } = useContext(Context);
     const params = useParams();
@@ -11,13 +12,11 @@ export const VehiclesDetail = (props) => {
         actions.loadinfoVehicles(params.theid);
     }, [])
 
-    console.log("props", props);
-    console.log("store", store);
 
     if (!store.infoVehicles || !Object.keys(store.infoVehicles).length) {
         return (
-            
-            <p>loading</p>
+
+            <p> <i className="fa fa-rocket text-danger" /></p>
         )
     }
 
@@ -30,12 +29,13 @@ export const VehiclesDetail = (props) => {
                 </div>
                 <div className="col-12 col-md-6 m-auto p-auto">
                     <div className="card-body">
-                        
+
                         <p >Nombre: {store.infoVehicles.properties.name}</p>
+                        <p >Descripción: {store.infoVehicles.description}</p>
                         <p >Model:{store.infoVehicles.properties.model}</p>
                         <p >Lenght: {store.infoVehicles.properties.length}</p>
-                        <p >Passangers :{store.infoVehicles.properties.passangers}</p>
-                        <p >Speed :{store.infoVehicles.properties.speed}</p>
+                        <p >Passangers :{store.infoVehicles.properties.passengers}</p>
+                        <p >Capacidad :{store.infoVehicles.properties.cargo_capacity}</p>
                         <p >Crew :{store.infoVehicles.properties.crew}</p>
 
 

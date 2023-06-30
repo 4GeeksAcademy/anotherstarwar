@@ -1,5 +1,4 @@
 .btn btn1 m-auto {
-    /* Estilos generales del botón */
     padding: 10px 20px;
     background-color: #FDD835;
     color: #ffffff;
@@ -10,17 +9,14 @@
   }
   
   .btn:hover {
-    /* Estilo al pasar el cursor sobre el botón */
     background-color: #FBC02D;
   }
   
   .btn.favorite {
-    /* Estilo para el botón marcado como favorito */
     background-color: #EF5350;
   }
   
   .btn.favorite:hover {
-    /* Estilo al pasar el cursor sobre el botón marcado como favorito */
     background-color: #E53935;
   }
   
@@ -64,5 +60,8 @@
     height: 100vh; 
   }
   
+  .texto-blanco {
+    background-color: white;
+  }
   
  
