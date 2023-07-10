@@ -105,6 +105,105 @@ const getState = ({
                 })
             },
 
+            login: async (email, password) => {
+                try {
+                    let response = await fetch('https://antoniomorales17-musical-space-guide-j6x9vqxw45qfprw5-3000.preview.app.github.dev/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        })
+                    });
+            
+                    if (response.ok) {
+                        let data = await response.json();
+                        localStorage.setItem("token", data.access_token);
+                        setStore({
+                            auth: true
+                        });
+                        return true;
+                    } else {
+                        let errorData = await response.json();
+                        console.log(errorData);
+                        if (response.status === 401)
+                            alert(errorData.msg);
+                        return false;
+                    }
+                } catch (error) {
+                    console.log(error);
+                    return false;
+                }
+            },
+            signup: async (email, password, nombre, apellido, fecha_suscripcion) => {
+                try {
+                    let response = await fetch('https://antoniomorales17-musical-space-guide-j6x9vqxw45qfprw5-3000.preview.app.github.dev/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: nombre,
+                            apellido: apellido,
+                            email: email,
+                            password: password,
+                            fecha_suscripcion: fecha_suscripcion
+                        })
+                    });
+            
+                    if (response.ok) {
+                        let data = await response.json();
+                        alert(data.msg);
+                        return true;
+                    } else {
+                        let errorData = await response.json();
+                        console.log(errorData);
+                        if (response.status === 401)
+                            alert(errorData.msg);
+                        return false;
+                    }
+                } catch (error) {
+                    console.log(error);
+                    return false;
+                }
+            },
+            logout: () => {
+                localStorage.removeItem("token");
+                setStore({
+                    auth: false
+                });
+            },
+            validToken: async () => {
+                let token = localStorage.getItem("token");
+                try {
+                    let response = await fetch('https://antoniomorales17-musical-space-guide-j6x9vqxw45qfprw5-3000.preview.app.github.dev/profile', {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    });
+            
+                    if (response.ok) {
+                        let data = await response.json();
+                        setStore({
+                            auth: data.isLogged
+                        });
+                        return true;
+                    } else {
+                        let errorData = await response.json();
+                        console.log(errorData);
+                        if (response.status === 401)
+                            alert(errorData.msg);
+                        return false;
+                    }
+                } catch (error) {
+                    console.log(error);
+                    return false;
+                }
+            },
+            
+
 
 
             changeColor: (index, color) => {

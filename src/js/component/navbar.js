@@ -1,9 +1,16 @@
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../img/logo.png';
 import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../store/appContext';
+
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate()
+  
+	function handleLogout() {
+		actions.logout()
+		navigate("/")
+	}
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -50,6 +57,10 @@ export const Navbar = () => {
               </blockquote>
             )}
           </ul>
+          <div className="ml-auto">
+				{store.auth ? <button className="btn  btn-outline-warning m-1" onClick={handleLogout}> <strong>Logout</strong></button>: <Link to={"/login"}  className="btn  btn-outline-warning m-1"><strong>Login</strong></Link>}
+					
+			</div>
         </div>
       </div>
     </nav>
