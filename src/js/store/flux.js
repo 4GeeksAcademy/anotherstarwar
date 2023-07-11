@@ -1,4 +1,4 @@
-
+import axios from "axios";
 
 const getState = ({
     getStore,
@@ -105,104 +105,82 @@ const getState = ({
                 })
             },
 
-            login: async (email, password) => {
-                try {
-                    let response = await fetch('https://antoniomorales17-musical-space-guide-j6x9vqxw45qfprw5-3000.preview.app.github.dev/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            password: password
-                        })
-                    });
-            
-                    if (response.ok) {
-                        let data = await response.json();
-                        localStorage.setItem("token", data.access_token);
-                        setStore({
-                            auth: true
-                        });
-                        return true;
-                    } else {
-                        let errorData = await response.json();
-                        console.log(errorData);
-                        if (response.status === 401)
-                            alert(errorData.msg);
-                        return false;
-                    }
-                } catch (error) {
-                    console.log(error);
-                    return false;
-                }
-            },
-            signup: async (email, password, nombre, apellido, fecha_suscripcion) => {
-                try {
-                    let response = await fetch('https://antoniomorales17-musical-space-guide-j6x9vqxw45qfprw5-3000.preview.app.github.dev/signup', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            nombre: nombre,
-                            apellido: apellido,
-                            email: email,
-                            password: password,
-                            fecha_suscripcion: fecha_suscripcion
-                        })
-                    });
-            
-                    if (response.ok) {
-                        let data = await response.json();
-                        alert(data.msg);
-                        return true;
-                    } else {
-                        let errorData = await response.json();
-                        console.log(errorData);
-                        if (response.status === 401)
-                            alert(errorData.msg);
-                        return false;
-                    }
-                } catch (error) {
-                    console.log(error);
-                    return false;
-                }
-            },
-            logout: () => {
-                localStorage.removeItem("token");
+           //funcion de logueo verifica el usario recibido desde el front 
+           login: async (email, password) => {
+            try {
+
+                let response = await axios.post('https://antoniomorales17-literate-bassoon-v4xw9qx54wj2xx9j-3000.preview.app.github.dev/login', {
+                    email: email,
+                    password: password
+                })
+                //La API valida que nombre de usuario y contraseña sean correctos y regresa un objeto token
+                // if (response.status === 200) {
+                localStorage.setItem("token", response.data.access_token);
                 setStore({
-                    auth: false
+                    auth: true
                 });
-            },
-            validToken: async () => {
-                let token = localStorage.getItem("token");
-                try {
-                    let response = await fetch('https://antoniomorales17-musical-space-guide-j6x9vqxw45qfprw5-3000.preview.app.github.dev/profile', {
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    });
-            
-                    if (response.ok) {
-                        let data = await response.json();
-                        setStore({
-                            auth: data.isLogged
-                        });
-                        return true;
-                    } else {
-                        let errorData = await response.json();
-                        console.log(errorData);
-                        if (response.status === 401)
-                            alert(errorData.msg);
-                        return false;
-                    }
-                } catch (error) {
-                    console.log(error);
-                    return false;
+                return true;
+                // }
+            } catch (error) {
+                console.log(error);
+                if (error.response.status === 401)
+                    alert(error.response.data.msg)
+                return false;
+            }
+        },
+        // funcion para crear nuevo usuario 
+        signup: async (email, password, nombre, apellido, fecha_suscripcion) => {
+
+            try {
+
+                let response = await axios.post('https://antoniomorales17-literate-bassoon-v4xw9qx54wj2xx9j-3000.preview.app.github.dev/signup', {
+                    nombre: nombre,
+                    apellido: apellido,
+                    email: email,
+                    password: password,
+                    fecha_suscripcion
+                })
+
+                if (response.status === 200) {
+                    alert(response.data.msg)
+                    return true;
                 }
-            },
-            
+            } catch (error) {
+                if (error.response.status === 401)
+                    alert(error.response.data.msg)
+                return false;
+            }
+        },
+        //funcion para cerrar sesion 
+        logout: () => {
+            localStorage.removeItem("token")
+            setStore({
+                auth: false
+            })
+
+        },
+
+        validToken: async () => {
+            let token = localStorage.getItem("token");
+            try {
+
+                let response = await axios.get('https://antoniomorales17-literate-bassoon-v4xw9qx54wj2xx9j-3000.preview.app.github.dev/profile', {
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                    },
+                })
+                if (response.status === 200) {
+                    setStore({
+                        auth: response.data.isLogged
+                    });
+                    return true;
+                }
+            } catch (error) {
+                if (error.response.status === 401)
+                    alert(error.response.data.msg)
+                return false;
+            }
+        },
 
 
 
