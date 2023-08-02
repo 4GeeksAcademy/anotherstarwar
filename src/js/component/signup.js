@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+
+
 
 export const Signup = () => {
-    //declaramos un estado para cada uno de los inputs
 	const [apellido, setApellido] = useState("");
 	const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
@@ -13,11 +13,11 @@ export const Signup = () => {
     const {actions}=useContext(Context)
     const navigate = useNavigate();
 	console.log(fecha_suscripcion)
-    async function handleSingup(e) {
+    async function handleSignup(e) {
       e.preventDefault()
       console.log(email,password);
       let isLogged = await actions.signup(email,password,nombre,apellido,fecha_suscripcion);
-      if(isLogged){//true
+      if(isLogged){
         setEmail("")
         setPassword("")
 		setApellido("")
@@ -31,10 +31,12 @@ export const Signup = () => {
 		<div className="modal-dialog" role="document">
 			<div className="modal-content rounded-5 shadow border border-warning">
 		<div className="text-center p-5 pb-4 " id='nav'>
-      <h1 className="text-center"> Create account  </h1>
+		<h1 className="text-center" style={{ color: "white" }}>
+        Create account
+      </h1>
 	   </div> 
 	   <div className="modal-body bg-dark p-5 pt-0">
-	   <form onSubmit={handleSingup}>
+	   <form onSubmit={handleSignup}>
 	   <div className="form-control  border border-ligth text-center text-ligth opacity-50 m-3">
 		 <input
 		   type="nombre"

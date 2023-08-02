@@ -2,10 +2,8 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Link, useNavigate } from "react-router-dom";
 
-import axios from "axios"
 
 export const Login = () => {
-	 //declaramos un estado para cada uno de los inputs
 	 const [email, setEmail] = useState("");
 	 const [password, setPassword] = useState("");
 	 const {actions}=useContext(Context)
@@ -14,7 +12,7 @@ export const Login = () => {
 	 async function login(e) {
 	   e.preventDefault()
 	   let isLogged = await actions.login(email,password);
-	   if(isLogged){//true
+	   if(isLogged){
 		 setEmail("")
 		 setPassword("")
 		 navigate("/")
@@ -26,7 +24,9 @@ export const Login = () => {
 		<div className="modal-dialog" role="document">
 			<div className="modal-content rounded-5 shadow border border-warning">
 		<div className="text-center p-5 pb-4 " id='nav'>
-      <h1 className="text-center"> Login </h1>
+		<h1 className="text-center" style={{ color: "white" }}>
+        Login
+      </h1>
 	   </div> 
 	   <div className="modal-body bg-dark p-5 pt-0">
 	   <form onSubmit={login}>
@@ -63,7 +63,9 @@ export const Login = () => {
 		   Login
 		 </button>
 		 </div>
-		 <Link to={"/singup"}  className="text-warning m-2 "> Create an account</Link>	
+		 <Link to={"/signup"} className="white-link text-warning m-2">
+        Create an account
+      </Link>	
 		 
 		 </div>
 	   </form>
